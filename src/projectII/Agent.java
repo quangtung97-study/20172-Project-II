@@ -1,51 +1,34 @@
 package projectII;
 
-import repast.simphony.context.Context;
-import repast.simphony.space.continuous.ContinuousSpace;
-import repast.simphony.space.grid.Grid;
-
 public class Agent {
-	protected final Context<Object> context;
-	protected final Grid<Object> grid;
-	protected final ContinuousSpace<Object> space;
-	protected float x, y;
-	protected float newX, newY;
+	protected final ServiceLocator locator;
+	protected Vector pos;
+	protected Vector newPos;
 	
-	public Agent(
-			Context<Object> context, 
-			Grid<Object> grid, ContinuousSpace<Object> space,
-			float x, float y) {
-		this.context = context;
-		this.grid = grid;
-		this.space = space;
-		
-		context.add(this);
+	public Agent(ServiceLocator locator, Vector pos) {
+		this.locator = locator;
+		locator.getContext().add(this);
 
-		moveTo(x, y);
+		moveTo(pos);
 		applyMove();
 	}
 
-	protected void moveTo(float x, float y) {
-		this.newX = x;
-		this.newY = y;
+	protected void moveTo(Vector pos) {
+		this.newPos = pos;
 	}
 	
 	protected void applyMove() {
-		this.x = newX;
-		this.y = newY;
-		grid.moveTo(this, Math.round(x), Math.round(y));
-		space.moveTo(this, x, y);
+		pos = newPos;
+		locator.getGrid().moveTo(this, Math.round(pos.x), Math.round(pos.y));
+		locator.getSpace().moveTo(this, pos.x, pos.y);
 	}
 	
 	protected void removeThis() {
-		context.remove(this);
+		locator.getContext().remove(this);
 	}
 	
-	public float getX() { 
-		return x;
+	public Vector getPos() {
+		return pos;
 	}
 	
-	public float getY() {
-		return y;
-	}
 }

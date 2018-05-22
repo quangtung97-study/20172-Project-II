@@ -1,36 +1,54 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.5.0">
-  <name>Space</name>
+  <name>New Display</name>
   <type>2D</type>
   <styles>
+    <entry>
+      <string>projectII.TrafficNode</string>
+      <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
+    </entry>
     <entry>
       <string>projectII.TurningRoad</string>
       <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
     <entry>
-      <string>projectII.Obstacle</string>
+      <string>projectII.Car</string>
       <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
     <entry>
-      <string>projectII.Car</string>
+      <string>projectII.NormalRoad</string>
       <string>repast.simphony.visualization.editedStyle.EditedStyle2D</string>
     </entry>
   </styles>
   <editedStyles>
     <entry>
-      <string>projectII.TurningRoad</string>
-      <string>projectII.TurningRoad.style_0.xml</string>
+      <string>projectII.TrafficNode</string>
+      <string>projectII.TrafficNode.style_0.xml</string>
     </entry>
     <entry>
-      <string>projectII.Obstacle</string>
-      <string>projectII.Obstacle.style_3.xml</string>
+      <string>projectII.TurningRoad</string>
+      <string>projectII.TurningRoad.style_3.xml</string>
     </entry>
     <entry>
       <string>projectII.Car</string>
-      <string>projectII.Car.style_7.xml</string>
+      <string>projectII.Car.style_9.xml</string>
+    </entry>
+    <entry>
+      <string>projectII.NormalRoad</string>
+      <string>projectII.NormalRoad.style_3.xml</string>
     </entry>
   </editedStyles>
-  <netStyles/>
-  <editedNetStyles/>
+  <netStyles>
+    <entry>
+      <string>traffic network</string>
+      <string>repast.simphony.visualizationOGL2D.DefaultEdgeStyleOGL2D</string>
+    </entry>
+  </netStyles>
+  <editedNetStyles>
+    <entry>
+      <string>traffic network</string>
+      <null/>
+    </entry>
+  </editedNetStyles>
   <frequency>ON_MOVE</frequency>
   <schedParams>
     <start>1.0</start>
@@ -39,22 +57,26 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>410301431</hashCode>
+    <hashCode>-1877109447</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>space</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>projectII.TurningRoad</string>
+      <string>projectII.TrafficNode</string>
       <int>1</int>
     </entry>
     <entry>
-      <string>projectII.Obstacle</string>
+      <string>projectII.TurningRoad</string>
       <int>0</int>
     </entry>
     <entry>
       <string>projectII.Car</string>
+      <int>3</int>
+    </entry>
+    <entry>
+      <string>projectII.NormalRoad</string>
       <int>2</int>
     </entry>
   </layerOrder>
@@ -64,11 +86,23 @@
       <attributes/>
       <type>continuous space</type>
     </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>traffic network</id>
+      <attributes/>
+      <type>network</type>
+    </repast.simphony.scenario.data.ProjectionData>
   </projections>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
     <unitSize>15.0</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
+    <entry>
+      <string>traffic network</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
     <entry>
       <string>space</string>
       <repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>

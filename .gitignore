@@ -18,3 +18,4 @@ misc/
 model_description.txt
 repast-licenses/
 velocity.log
+*.log.*
