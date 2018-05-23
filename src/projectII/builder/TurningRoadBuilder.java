@@ -1,7 +1,5 @@
 package projectII.builder;
 
-import java.util.Map;
-
 import projectII.EdgePair;
 import projectII.ServiceLocator;
 import projectII.TrafficGraph;
@@ -12,19 +10,14 @@ import repast.simphony.space.graph.RepastEdge;
 
 public class TurningRoadBuilder extends RoadBuilder {
 	private final TrafficGraph graph;
-	private final Map<EdgePair, Integer> indexMap;
-
 	private int x0 = NON_ROAD_SIZE;
 	private int y0 = NON_ROAD_SIZE;
 	private int x1 = SPACE_SIZE - NON_ROAD_SIZE;
 	private int y1 = SPACE_SIZE - NON_ROAD_SIZE;
 	
-	public TurningRoadBuilder(ServiceLocator locator,
-			TrafficGraph graph,
-			Map<EdgePair, Integer> indexMap) {
+	public TurningRoadBuilder(ServiceLocator locator, TrafficGraph graph) {
 		super(locator);
 		this.graph = graph;
-		this.indexMap = indexMap;
 	}
 	
 	private Vector getDirectionRight(int x, int y) {
@@ -91,9 +84,9 @@ public class TurningRoadBuilder extends RoadBuilder {
 		RepastEdge<Object> down = locator.getNet().getEdge(b, graph.bot);
 		
 		
-		indexMap.put(new EdgePair(start, right), 0);
-		indexMap.put(new EdgePair(start, up), 1);
-		indexMap.put(new EdgePair(start, left), 2);
-		indexMap.put(new EdgePair(start, down), 3);
+		graph.indexMap.put(new EdgePair(start, right), 0);
+		graph.indexMap.put(new EdgePair(start, up), 1);
+		graph.indexMap.put(new EdgePair(start, left), 2);
+		graph.indexMap.put(new EdgePair(start, down), 3);
 	}
 }

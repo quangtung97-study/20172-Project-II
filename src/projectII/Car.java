@@ -1,7 +1,5 @@
 package projectII;
 
-import java.util.Map;
-
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.graph.RepastEdge;
@@ -10,14 +8,11 @@ public class Car extends Agent {
 	private float velocity;
 	private boolean turning = false;
 	private int directionIndex;
-	private final Map<EdgePair, Integer> indexMap;
-	private RepastEdge<Object> currentEdge;
+	private RepastEdge<Object> currentEdge = null;
 	
-	public Car(ServiceLocator locator, Vector pos, float v, TrafficGraph graph, 
-			Map<EdgePair, Integer> indexMap) {
+	public Car(ServiceLocator locator, Vector pos, float v) {
 		super(locator, pos);
 		this.velocity = v;
-		this.indexMap = indexMap;
 	}
 	
 	private void moveByNormalRoad(NormalRoad road) {
@@ -42,7 +37,8 @@ public class Car extends Agent {
 		int index = 0;
 		for (RepastEdge<Object> edge: edges) {
 			if (index == rand) {
-				return indexMap.get(new EdgePair(currentEdge, edge));
+				TrafficNode currentNode = (TrafficNode) currentEdge.getTarget();
+				return currentNode.getIndexMap().get(new EdgePair(currentEdge, edge));
 			}
 			index++;
 		}

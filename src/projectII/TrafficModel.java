@@ -1,8 +1,5 @@
 package projectII;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import projectII.builder.NormalRoadBuilder;
 import projectII.builder.TurningRoadBuilder;
 import repast.simphony.context.Context;
@@ -53,19 +50,16 @@ public class TrafficModel implements ContextBuilder<Object> {
 		context.setId("ProjectII");
 		
 		ServiceLocator locator = createServices(context);
-		
 		TrafficGraph graph = new TrafficGraph(locator);
-		
-		Map<EdgePair, Integer> indexMap = new HashMap<>();
 		
 		NormalRoadBuilder normalBuilder = new NormalRoadBuilder(locator, graph);
 		normalBuilder.build();
 
-		TurningRoadBuilder turningBuilder = new TurningRoadBuilder(locator, graph, indexMap);
+		TurningRoadBuilder turningBuilder = new TurningRoadBuilder(locator, graph);
 		turningBuilder.build();
 		
 		Vector pos = new Vector(SPACE_SIZE / 2 + 7, 0);
-		new CarGenerator(locator, pos, 0.5f, graph, indexMap);
+		new CarGenerator(locator, pos, 0.5f, graph);
 		
 		return context;
 	}
