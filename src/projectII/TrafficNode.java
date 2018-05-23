@@ -1,5 +1,6 @@
 package projectII;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class TrafficNode extends Agent {
@@ -9,13 +10,13 @@ public class TrafficNode extends Agent {
 	};
 	
 	private final Type type;
-	private final Map<EdgePair, Integer> indexMap;
+	private Map<EdgePair, Integer> indexMap = null;
 	
-	public TrafficNode(ServiceLocator locator, Vector pos, Type type,
-			Map<EdgePair, Integer> indexMap) {
+	public TrafficNode(ServiceLocator locator, Vector pos, Type type) {
 		super(locator, pos);
 		this.type = type;
-		this.indexMap = indexMap;
+		if (type == Type.CROSS_ROAD)
+			this.indexMap = new HashMap<>();
 	}
 	
 	public Type getType() {
