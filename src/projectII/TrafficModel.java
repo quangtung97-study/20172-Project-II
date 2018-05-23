@@ -20,9 +20,9 @@ import repast.simphony.space.grid.SimpleGridAdder;
 
 public class TrafficModel implements ContextBuilder<Object> {
 	public static final int SPACE_SIZE = 101;
-	public static final int ROAD_SIZE = 20;
-	public static final int NON_ROAD_SIZE = (SPACE_SIZE - 1 - 2 * ROAD_SIZE) / 2;
-	public static final int MIDDLE = SPACE_SIZE / 2;
+	private static final int ROAD_SIZE = 20;
+	private static final int NON_ROAD_SIZE = (SPACE_SIZE - 1 - 2 * ROAD_SIZE) / 2;
+	private static final int MIDDLE = SPACE_SIZE / 2;
 	
 	private ServiceLocator createServices(Context<Object> context) {
 		GridFactory gridBuilder = GridFactoryFinder.createGridFactory(null);
@@ -111,8 +111,11 @@ public class TrafficModel implements ContextBuilder<Object> {
 		
 		buildRoad(locator, graph);
 		
-		Vector pos = new Vector(SPACE_SIZE / 2 + 7, 0);
-		new CarGenerator(locator, pos, 0.5f, graph);
+		Vector pos = new Vector(SPACE_SIZE / 2 + ROAD_SIZE / 2, 0);
+		new CarGenerator(locator, pos, 0.5f, graph, true);
+		
+		pos = new Vector(0, NON_ROAD_SIZE + ROAD_SIZE / 2);
+		new CarGenerator(locator, pos, 0.5f, graph, false);
 		
 		return context;
 	}

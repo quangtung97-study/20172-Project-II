@@ -19,7 +19,7 @@ public class EdgePair {
 	public boolean equals(Object o) {
 		if (o instanceof EdgePair) {
 			EdgePair other = (EdgePair)o;
-			if (other.hashCode() == this.hashCode())
+			if (a.equals(other.a) && b.equals(other.b))
 				return true;
 		}
 		return false;

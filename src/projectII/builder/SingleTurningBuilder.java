@@ -39,7 +39,6 @@ public class SingleTurningBuilder {
 	}
 	
 	public void build() {
-		cal.setRectangle(rec);
 		int index = 0;
 
 		for (int x = rec.getX(); x < rec.getEndX(); x++) 
