@@ -44,6 +44,14 @@ public class TurningBuilder {
 		singleBuilder.setDirectionCalculator(new UpDirectionCalculator(rec));
 		singleBuilder.build();
 
+		singleBuilder.setNodes(mid, bot, top, right, left);
+		singleBuilder.setDirectionCalculator(new DownDirectionCalculator(rec));
+		singleBuilder.build();
+
+		singleBuilder.setNodes(mid, left, right, bot, top);
+		singleBuilder.setDirectionCalculator(new LeftDirectionCalculator(rec));
+		singleBuilder.build();
+
 		singleBuilder.setNodes(mid, right, left, top, bot);
 		singleBuilder.setDirectionCalculator(new RightDirectionCalculator(rec));
 		singleBuilder.build();

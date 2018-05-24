@@ -116,6 +116,12 @@ public class TrafficModel implements ContextBuilder<Object> {
 		
 		pos = new Vector(0, NON_ROAD_SIZE + ROAD_SIZE / 2);
 		new CarGenerator(locator, pos, 0.5f, graph, false);
+
+		pos = new Vector(SPACE_SIZE - 1, MIDDLE + ROAD_SIZE / 2);
+		new CarGenerator(locator, pos, 0.5f, graph, false);
+
+		pos = new Vector(SPACE_SIZE / 2 - ROAD_SIZE / 2, SPACE_SIZE - 1);
+		new CarGenerator(locator, pos, 0.5f, graph, true);
 		
 		return context;
 	}
