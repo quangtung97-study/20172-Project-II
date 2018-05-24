@@ -11,7 +11,7 @@ public class TrafficGraph {
 	
 	public TrafficGraph(ServiceLocator locator) {
 		Vector pos = null;
-		final int space_size = TrafficModel.SPACE_SIZE;
+		final int space_size = 101;
 		
 		pos = new Vector(space_size / 2, space_size / 2);
 		mid = new TrafficNode(locator, pos, TrafficNode.Type.CROSS_ROAD);

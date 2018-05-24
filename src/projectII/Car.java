@@ -2,6 +2,7 @@ package projectII;
 
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.Dimensions;
 import repast.simphony.space.graph.RepastEdge;
 
 public class Car extends Agent {
@@ -79,10 +80,9 @@ public class Car extends Agent {
 	public void postStep() {
 		applyMove();
 
-		float x = pos.x;
-		float y = pos.y;
-		if (x < 0 || x >= TrafficModel.SPACE_SIZE ||
-			y < 0 || y >= TrafficModel.SPACE_SIZE)
+		Dimensions dims = locator.getSpace().getDimensions();
+		if (pos.x < 0 || pos.x >= dims.getWidth() || 
+			pos.y < 0 || pos.y >= dims.getHeight())
 			removeThis();
 	}
 }
