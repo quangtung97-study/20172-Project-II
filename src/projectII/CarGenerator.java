@@ -12,7 +12,6 @@ public class CarGenerator {
 	public CarGenerator(
 			ServiceLocator locator,
 			Vector pos, float v, 
-			TrafficGraph graph, 
 			boolean isVertical) 
 	{
 		this.locator = locator;

@@ -10,10 +10,12 @@ public class Car extends Agent {
 	private boolean turning = false;
 	private int directionIndex;
 	private RepastEdge<Object> currentEdge = null;
+	private final Dimensions dims;
 	
 	public Car(ServiceLocator locator, Vector pos, float v) {
 		super(locator, pos);
 		this.velocity = v;
+		this.dims = locator.getSpace().getDimensions();
 	}
 	
 	private void moveByNormalRoad(NormalRoad road) {
@@ -80,7 +82,6 @@ public class Car extends Agent {
 	public void postStep() {
 		applyMove();
 
-		Dimensions dims = locator.getSpace().getDimensions();
 		if (pos.x < 0 || pos.x >= dims.getWidth() || 
 			pos.y < 0 || pos.y >= dims.getHeight())
 			removeThis();
